@@ -22,7 +22,7 @@ def question_create(request):
     if request.method == "POST":
         # 인수를 넣어 subject, content값이 QuestionForm 의
         # 속성에 자동으로 저장되어 객체가 생성된다.
-        form = QuestionForm(request.POST)
+        form = QuestionForm(request.POST, request.FILES)
         # 폼이 유효하다면
         if form.is_valid():
             # 임시 저장(commit=false)해 question 객체를 리턴받음 why?

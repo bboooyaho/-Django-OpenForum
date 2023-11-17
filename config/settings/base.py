@@ -1,5 +1,5 @@
 from pathlib import Path
-
+import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
@@ -15,8 +15,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['43.202.81.190']
 
-
-# Application definition
+#midia 경로 추가 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 INSTALLED_APPS = [
     #pybo/apps.py 파일에 있는 클래스로, pybo 앱 생성 시, 자동으로 만들어지는 
@@ -43,6 +44,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'config.urls'
+
 
 TEMPLATES = [
     {

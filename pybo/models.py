@@ -15,6 +15,8 @@ class Question(models.Model):
     #blank=Ture 는 form.is_vaild() 를 통한 입력 데이터 검증 시 값이 없어도 됨 
     #null=true, blank = ture 는 어떤 조건으로든 값을 비워둘 수 있다.
     modify_date = models.DateTimeField(null=True, blank=True)
+    #img 필드 추가
+    imgfile = models.ImageField(null=True, upload_to="", blank=True)
     #str 함수에 의해 질문 id값이 제목으로 표시 
     def __str__(self):
         return self.subject 
@@ -28,3 +30,11 @@ class Answer(models.Model):
     modify_date = models.DateTimeField(null=True, blank=True) 
     create_date = models.DateTimeField()  
     voter = models.ManyToManyField(User, related_name="voter_answer") 
+
+
+#대댓글 구현 
+class Comment(models.Model):
+    author = models.ForeignKey(User, related_name="author_comment", on_delete=models.CASCADE)
+    answer = models.ForeignKey(Answer, on_delete=models.CASCADE )
+    content = models.TextField() 
+    create_date = models.DateTimeField()  

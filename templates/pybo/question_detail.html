@@ -21,7 +21,14 @@
             <p> {{question.content|mark}} </p> 
             {% else %}
             <p> 상세 질문이 없습니다. </p>
-            {% endif %}</div> 
+            {% endif %}</div>
+            <!--img 파일이 있다면 화면에 뿌리기--> 
+            {% if question.imgfile %}
+            <div class="container border col-10">
+                <div style="width:10%; height:150px; float:left; margin-right:10px;">
+                    <img src="{{ question.imgfile.url }}" width="700">
+                </div>
+            {% endif %}
             <div class="d-flex justify-content-end">
                 <!--수정 일시 표시-->
                 {% if question.modify_date  %}
@@ -100,6 +107,12 @@
         <a href="javascript:void(0)" class="delete btn btn-sm btn-outline-secondary"
                     data-uri="{% url 'pybo:answer_delete' answer.id %}">삭제</a>   
         {% endif %}  
+            <!-- 답변 대댓글
+            버튼을 누르면 회색 답글창 생성 
+            <a href="javascript:void(0)" data-uri="{% url 'pybo:answer_comment' answer.id %}"
+            class=" btn btn-sm btn-outline-secondary">답글
+            <span class="badge rounded-pill bg-success">{{answer.comment.count}}</span>
+            </a> -->
         </div>
     </div>
 </div>

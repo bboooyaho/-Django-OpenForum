@@ -14,10 +14,17 @@
             id="subject" value="{{ form.subject.value|default_if_none:'' }}"> 
         </div>
         <div class="mb-3">
-            <label for="content" class="form-label">내용</label>
-            <textarea class="form-control"name="content"
-                id="content"rows="10">{{ form.content.value|default_if_none:''}}</textarea>
-        </div>
+        <label for="content" class="form-label">내용</label>
+        <textarea class="form-control"name="content" id="content"rows="10">{{ form.content.value|default_if_none:''}}
+        </textarea>
+        <!--이미지 파일 첨부하기-->
+
+        <h5 class="my-3 border-bottom pb-2">이미지 삽입</h5>
+            <form method="post" class="post-form my-3" enctype="multipart/form-data">
+                <div class="form-group">
+                    <input type="file" class="form-control" name="imgfile" id="imgfile" >  
+                </div>
+            </div>
         <button type="submit" class="btn btn-primary">저장하기</button>
     </form>
 </div>

@@ -2,6 +2,8 @@ from django.urls import path
 #from . import views 
 #views.index 대신 base_views.index 전체 경로를 작성 
 from .views import base_views, question_views, answer_views
+from django.conf.urls.static import static
+from django.conf import settings
 
 #namespace
 app_name = 'pybo'
@@ -22,6 +24,10 @@ urlpatterns = [
     path('question/delete/<int:question_id>/', question_views.question_delete, name='question_delete'),
     # 질문 추천 페이지 매핑
     path('question/vote/<int:question_id>/', question_views.question_vote, name='question_vote'),
+    #이미지 첨부
+
+
+    
 
     #answer_views.py 
     path('answer/create/<int:question_id>/', answer_views.answer_create,name='answer_create'),
@@ -31,7 +37,9 @@ urlpatterns = [
     # 답변 추천 페이지 매핑
     path('answer/vote/<int:answer_id>/', answer_views.answer_vote, name='answer_vote'), 
 
-    #answer_views.py 
+    #답변 대댓글 매핑 
+    path('answer/comment/<int:answer_id>', answer_views.answer_comment , name='answer_comment'),
 
 
 ]
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) # media 경로 추가

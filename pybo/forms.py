@@ -7,10 +7,12 @@ class QuestionForm(forms.ModelForm):
     class Meta:
         model = Question  # 사용할 모델
         # QuestionForm 에서 사용할 Question 모델의 속성
-        fields = ["subject", "content"]
+        fields = ["subject", "content","imgfile"]
         # 라벨을 붙여 subject -> 제목 변환
         labels = {"subject": "제목", 
-                  "content": "내용"}
+                  "content": "내용",
+                  "imgfile" :"이미지"
+                 }
 
 class AnswerForm(forms.ModelForm) : 
     class Meta:

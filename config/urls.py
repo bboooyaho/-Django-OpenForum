@@ -2,9 +2,7 @@ from django.contrib import admin
 from django.urls import path
 from pybo.views import base_views
 
-#views import
-#from pybo import views 
-#path, include import 
+
 from django.urls import path, include
 
 urlpatterns = [
